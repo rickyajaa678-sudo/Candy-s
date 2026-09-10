@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            padding: 25px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 85%;
+            max-width: 400px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        h1 { color: #ff4d6d; font-size: 24px; margin-bottom: 30px; line-height: 1.4; }
+        p { color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-top: 15px; font-weight: 500; display: none; }
+        .btn-container { 
+            position: relative; 
+            height: 150px; 
+            width: 100%;
+        }
+        button {
+            font-size: 18px;
+            padding: 12px 35px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            position: absolute;
+            transition: all 0.1s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #yesBtn { 
+            background-color: #4cc9f0; 
+            color: white; 
+            left: 15%;
+            top: 20px;
+        }
+        #noBtn {
+            background-color: #ff4d6d;
+            color: white;
+            right: 15%;
+            top: 20px;
+            touch-action: none;
+        }
+        .media-container img {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: none;
+        }
+        #heartIcon {
+            font-size: 60px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop autoplay>
+        <source src="https://mixkit.co" type="audio/wav">
+        <source src="https://soundhelix.com" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <div class="media-container" id="mediaBox">
+            <span id="heartIcon">💖</span>
+            <!-- Link foto pacar Anda yang dari Postimages sudah terpasang aman di bawah ini -->
+            <img id="fotoPacar" src="https://postimg.cc" alt="Foto Pasangan">
+        </div>
+        <h1 id="question">Mau gak jadi istri aku? 💍</h1>
+        
+        <p id="romanticMessage">Jangan bandel dan nakal ya biar sayang nya aku bisa terus bertambah sama kamu. Susah senang harus tetap bersama ya sayang, mudah-mudahan kamu bisa jadi pacar dan juga istri aku kedepan nya. ✨💍</p>
+
+        <div class="btn-container">
+            <button id="yesBtn" onclick="takedHeart()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        document.body.addEventListener('click', function() {
+            var audio = document.getElementById('bgMusic');
+            if (audio.paused) { audio.play(); }
+        }, { once: true });
+
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const maxX = window.innerWidth - noBtn.offsetWidth - 40;
+            const maxY = window.innerHeight - noBtn.offsetHeight - 40;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        function takedHeart() {
+            document.getElementById('question').innerHTML = "I love you sayang ❤️";
+            document.getElementById('romanticMessage').style.display = 'block';
+            document.getElementById('heartIcon').style.display = 'none';
+            document.getElementById('fotoPacar').style.display = 'inline-block';
+            document.querySelector('.btn-container').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
